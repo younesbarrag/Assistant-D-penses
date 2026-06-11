@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Enums\CategorieDepense;
 
 
+
 class Depense extends Model
 {
     protected $fillable = [
@@ -20,8 +21,8 @@ class Depense extends Model
         'categorie' => CategorieDepense::class,
     ];
 
-    public function recu() : Belongsto
+    public function recu() : BelongsTo
     {
-        return $this ->belongsToMany(Recu::class);
+        return $this ->belongsTo(Recu::class);
     }
 }
