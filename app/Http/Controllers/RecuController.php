@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRecuRequest;
 use App\Models\Recu;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Jobs\ExtraireDepensesDuRecu;
 
 class RecuController extends Controller
 {
@@ -34,6 +35,7 @@ class RecuController extends Controller
             'statut' => StatutRecu::EN_ATTENTE,
             'devise' => 'MAD',
         ]);
+        ExtraireDepensesDuRecu::dispatch($recu);
 
         return redirect()
             ->route('recus.show', $recu)

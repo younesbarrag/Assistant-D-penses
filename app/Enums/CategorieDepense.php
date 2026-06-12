@@ -4,10 +4,9 @@ namespace App\Enums;
 
 enum CategorieDepense: string
 {
-    case ALTIMENTAIRE = 'alimentaire';
+    case ALIMENTAIRE = 'alimentaire';
+    case BOISSONS = 'boissons';
+    case ENTRETIEN = 'entretien';
     case TRANSPORT = 'transport';
-    case LOGEMENT = 'logement';
-    case LOISIRS = 'loisirs';
     case AUTRES = 'autres';
-
 }
