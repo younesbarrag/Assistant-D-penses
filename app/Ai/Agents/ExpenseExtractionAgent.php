@@ -18,15 +18,32 @@ class ExpenseExtractionAgent implements Agent, Conversational, HasTools
      * Get the instructions that the agent should follow.
      */
     public function instructions(): Stringable|string
-    {
-        return 'You are a helpful assistant.';
-    }
+{
+    return <<<'TEXT'
+Tu es un extracteur de dépenses pour reçus fournisseurs.
 
-    /**
-     * Get the list of messages comprising the conversation so far.
-     *
-     * @return Message[]
-     */
+Tu dois répondre uniquement avec un JSON valide, sans explication, sans markdown.
+
+Format obligatoire:
+{
+  "articles": [
+    {
+      "libelle": "string",
+      "quantite": 1,
+      "prix_unitaire": 0.0,
+      "categorie": "alimentaire|boissons|entretien|transport|autres"
+    }
+  ],
+  "total_estime": 0.0,
+  "devise": "MAD"
+}
+
+Règles:
+- Déduis la quantité et le prix unitaire même si le format est mal écrit.
+- Si la catégorie est inconnue, utilise "autres".
+- Ne retourne aucun texte hors JSON.
+TEXT;
+}
     public function messages(): iterable
     {
         return [];
