@@ -60,6 +60,11 @@
                 </a>
             </div>
 
+            @if($recu->payload_ia)
+    <h3>Réponse IA brute</h3>
+    <pre>{{ json_encode($recu->payload_ia, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+@endif
+
         </div>
     </div>
 </x-app-layout>
